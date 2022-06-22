@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
  
  		@article.save
  		 redirect_to @article
+ 		 #
 	end
 
 end
