@@ -1,4 +1,9 @@
 class ArticlesController < ApplicationController
+
+  # Dummy authentication
+  http_basic_authenticate_with name: "erb", password: "secret", except: [:index, :show]
+
+
   # Articles / Basic CRUD 
 
   def index
