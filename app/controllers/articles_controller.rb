@@ -1,29 +1,41 @@
 class ArticlesController < ApplicationController
-  # Articles / Basic CRUD
+  # Articles / Basic CRUD 
 
   def index
   	@articles = Article.all
   end
 
-
   def show
     @article = Article.find(params[:id])
   end
 
-
   def new
-  	# nothing yet, use standard Rails feature
+  	@article = Article.new
+  end
+
+  def edit
+  	@article = Article.find(params[:id])
   end
 
   def create
-  	
 	@article = Article.new(article_params)
  
  	#if valid
  	if @article.save
    		redirect_to @article
   	else
+  		#we use render instead of redirect_to to pass the object using the same request 
     	render 'new'
+  	end
+  end
+
+  def update
+  	@article = Article.find(params[:id])
+ 
+  	if @article.update(article_params)
+    	redirect_to @article
+  	else
+    	render 'edit'
   	end
   end
 
